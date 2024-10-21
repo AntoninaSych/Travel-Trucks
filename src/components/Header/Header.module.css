@@ -13,7 +13,7 @@
     font-weight: 600;
     font-size: 24px;
     color: #101828;
-    flex: 1; /* Логотип будет прижат к левой стороне */
+    flex: 1;
 }
 
 .nav {
@@ -21,7 +21,7 @@
     gap: 32px;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* Центрируем навигацию */
+    transform: translateX(-50%);
 }
 
 .link {
@@ -33,9 +33,9 @@
 }
 
 .link:hover {
-    color: #475467; /* Цвет при наведении */
+    color: #475467;
 }
 
 .active {
-    color: #E44848; /* Красный цвет для активной ссылки */
+    color: #E44848;
 }
