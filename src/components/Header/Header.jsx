@@ -4,18 +4,24 @@ import styles from './Header.module.css';
 const Header = () => {
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>TravelTrucks</div>
+            <div className={styles.logo}>
+                Travel<span>Trucks</span>
+            </div>
             <nav className={styles.nav}>
                 <NavLink
                     to="/"
-                    className={({ isActive }) => (isActive ? styles.active : '')}>
+                    end
+                    className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
+                >
                     Home
                 </NavLink>
                 <NavLink
                     to="/catalog"
-                    className={({ isActive }) => (isActive ? styles.active : '')}>
+                    className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
+                >
                     Catalog
                 </NavLink>
+
             </nav>
         </header>
     );

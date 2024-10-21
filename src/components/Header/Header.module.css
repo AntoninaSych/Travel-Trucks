@@ -1,34 +1,41 @@
 .header {
     display: flex;
-    justify-content: center; /* Центрируем блок с навигацией */
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: white;
+    padding: 24px 64px;
+    background-color: #F7F7F7;
+    border-bottom: 1px solid #E2E2E2;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Добавляем тень */
 }
 
 .logo {
-    position: absolute;
-    left: 50px; /* Логотип позиционирован слева */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     font-size: 24px;
-    font-weight: bold;
     color: #101828;
+    flex: 1; /* Логотип будет прижат к левой стороне */
 }
 
 .nav {
     display: flex;
-    justify-content: center;
+    gap: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем навигацию */
 }
 
-.nav a {
-    margin-left: 30px;
+.link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     font-size: 18px;
     color: #101828;
     text-decoration: none;
 }
 
-.nav a.active {
-    color: #E44848;
-    border-bottom: 2px solid #E44848;
+.link:hover {
+    color: #475467; /* Цвет при наведении */
+}
+
+.active {
+    color: #E44848; /* Красный цвет для активной ссылки */
 }

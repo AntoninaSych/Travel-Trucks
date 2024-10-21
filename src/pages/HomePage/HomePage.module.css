@@ -2,7 +2,7 @@
 .banner {
     background-image: url('../../assets/images/hero.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
     height: 100vh;
     position: relative;
@@ -31,7 +31,7 @@
 /* Заголовок */
 .bannerContent h1 {
     font-family: 'Inter', sans-serif;
-    font-size: 48px; /* Размер текста согласно макету */
+    font-size: 48px;
     font-weight: 600;
     line-height: 1.2;
     color: #F7F7F7;
@@ -42,9 +42,9 @@
 /* Подзаголовок */
 .bannerContent p {
     font-family: 'Inter', sans-serif;
-    font-size: 24px; /* Размер текста согласно макету */
+    font-size: 24px;
     font-weight: 600;
-    line-height: 32px; /* Высота строки */
+    line-height: 32px;
     color: #F7F7F7;
     margin-bottom: 32px;
     width: 550px;
@@ -52,11 +52,11 @@
 
 /* Кнопка */
 .viewButton {
-    padding: 16px 60px; /* Параметры кнопки согласно макету */
+    padding: 16px 60px;
     background-color: #E44848;
     color: white;
     border: none;
-    border-radius: 200px; /* Скругление кнопки */
+    border-radius: 200px;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
