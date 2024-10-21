@@ -1,0 +1,24 @@
+.catalogPage {
+    display: flex;
+    padding: 20px;
+}
+
+.camperList {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.loadMoreButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #E44848;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.loadMoreButton:hover {
+    background-color: #DB4343;
+}

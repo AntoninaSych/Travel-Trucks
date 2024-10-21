@@ -1,0 +1,42 @@
+.camperCard {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #DADEE1;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.camperImage {
+    width: 150px;
+    height: 100px;
+    border-radius: 8px;
+}
+
+.camperInfo {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.camperName {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.camperPrice {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.showMoreButton {
+    background-color: #E44848;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.showMoreButton:hover {
+    background-color: #DB4343;
+}

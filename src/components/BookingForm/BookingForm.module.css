@@ -1,0 +1,33 @@
+.bookingForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookingForm h3 {
+    margin-bottom: 15px;
+}
+
+.bookingForm input,
+.bookingForm textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.bookingButton {
+    background-color: #E44848;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.bookingButton:hover {
+    background-color: #DB4343;
+}

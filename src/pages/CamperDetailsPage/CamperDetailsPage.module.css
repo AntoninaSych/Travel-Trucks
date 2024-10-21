@@ -1,0 +1,23 @@
+.detailsContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.camperTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 250px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.camperDescription {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
