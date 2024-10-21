@@ -6,8 +6,10 @@
     background-repeat: no-repeat;
     height: 100vh;
     position: relative;
-    overflow: hidden;
-    padding-left: 150px; /* Выравниваем контент левее */
+    padding-left: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Затемнение */
@@ -24,30 +26,39 @@
     position: relative;
     z-index: 1;
     max-width: 600px;
-    margin-top: 200px;
 }
 
+/* Заголовок */
 .bannerContent h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    font-size: 48px; /* Размер текста согласно макету */
+    font-weight: 600;
     line-height: 1.2;
-    color: white;
+    color: #F7F7F7;
+    margin-bottom: 16px;
+    width: 571px;
 }
 
+/* Подзаголовок */
 .bannerContent p {
-    font-size: 1.5rem;
-    color: white;
-    margin: 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px; /* Размер текста согласно макету */
+    font-weight: 600;
+    line-height: 32px; /* Высота строки */
+    color: #F7F7F7;
+    margin-bottom: 32px;
+    width: 550px;
 }
 
+/* Кнопка */
 .viewButton {
-    margin-top: 30px;
-    padding: 15px 30px;
+    padding: 16px 60px; /* Параметры кнопки согласно макету */
     background-color: #E44848;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    border-radius: 200px; /* Скругление кнопки */
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
 }
 
