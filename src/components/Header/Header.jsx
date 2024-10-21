@@ -4,9 +4,9 @@ import styles from './Header.module.css';
 const Header = () => {
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
+            <NavLink to="/" className={styles.logo}>
                 Travel<span>Trucks</span>
-            </div>
+            </NavLink>
             <nav className={styles.nav}>
                 <NavLink
                     to="/"
@@ -21,7 +21,6 @@ const Header = () => {
                 >
                     Catalog
                 </NavLink>
-
             </nav>
         </header>
     );

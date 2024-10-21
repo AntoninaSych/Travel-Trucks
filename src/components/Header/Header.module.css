@@ -13,7 +13,13 @@
     font-weight: 600;
     font-size: 24px;
     color: #101828;
+    text-decoration: none;
     flex: 1;
+}
+
+.logo span {
+    font-weight: 400;
+    color: #475467;
 }
 
 .nav {
@@ -30,10 +36,6 @@
     font-size: 18px;
     color: #101828;
     text-decoration: none;
-}
-
-.link:hover {
-    color: #475467;
 }
 
 .active {
