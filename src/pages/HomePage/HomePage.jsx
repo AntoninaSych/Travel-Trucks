@@ -8,7 +8,7 @@ const HomePage = () => {
                 <div className={styles.overlay}></div>
                 <div className={styles.bannerContent}>
                     <h1>Campers of your dreams</h1>
-                    <p>You can find everything you want in our catalog</p>
+                    <h2>You can find everything you want in our catalog</h2>
                     <Link to="/catalog">
                         <button className={styles.viewButton}>View Now</button>
                     </Link>

@@ -39,25 +39,27 @@
 }
 
 
+body{
+    margin: 0;
+    padding: 0;
+}
 
 .bannerContent h1 {
     font-family: 'Inter', sans-serif;
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 32px;
     color: #F7F7F7;
-    margin-bottom: 16px;
     width: 571px;
 }
 
-.bannerContent p {
+.bannerContent h2 {
     font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
     color: #F7F7F7;
     margin-bottom: 32px;
-    width: 550px;
 }
 
 .viewButton {
