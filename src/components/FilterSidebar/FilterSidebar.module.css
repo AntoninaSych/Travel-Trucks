@@ -4,21 +4,74 @@
     border-radius: 10px;
 }
 
-.inputField {
-    width: 100%;
+.locationWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
     padding: 10px;
-    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.inputFieldWithIcon {
+    padding-left: 40px; /* Extra padding to make space for the icon */
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #101828;
+    flex: 1;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    fill: #101828;
+}
+
+.filterGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filterItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
     border: 1px solid #DADEE1;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #101828;
+    text-align: center;
+    cursor: pointer;
+}
+
+.filterItem.selected {
+    border: 1px solid #E44848;
+}
+
+.checkbox {
+    display: none; /* Hide default checkbox */
 }
 
 .searchButton {
     background-color: #E44848;
     color: white;
-    padding: 10px;
+    padding: 15px;
     width: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: 200px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .searchButton:hover {
