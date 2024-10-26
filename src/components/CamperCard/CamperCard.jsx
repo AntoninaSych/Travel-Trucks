@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import styles from './CamperCard.module.css';
 
 const CamperCard = ({ camper }) => {
@@ -14,6 +15,27 @@ const CamperCard = ({ camper }) => {
         Water: 'icon-water',
     };
 
+    // State for managing favorites
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    useEffect(() => {
+        const favoriteCampers = JSON.parse(localStorage.getItem('favoriteCampers')) || [];
+        setIsFavorite(favoriteCampers.includes(camper.id));
+    }, [camper.id]);
+
+    const handleFavoriteToggle = () => {
+        const favoriteCampers = JSON.parse(localStorage.getItem('favoriteCampers')) || [];
+        if (isFavorite) {
+            const updatedFavorites = favoriteCampers.filter(id => id !== camper.id);
+            localStorage.setItem('favoriteCampers', JSON.stringify(updatedFavorites));
+            setIsFavorite(false);
+        } else {
+            favoriteCampers.push(camper.id);
+            localStorage.setItem('favoriteCampers', JSON.stringify(favoriteCampers));
+            setIsFavorite(true);
+        }
+    };
+
     const renderEquipmentIcons = () => {
         return Object.keys(equipmentIcons)
             .filter((key) => camper[key.toLowerCase()])
@@ -27,8 +49,20 @@ const CamperCard = ({ camper }) => {
             ));
     };
 
+    const truncateText = (text, maxLength) => {
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+    };
+
     return (
         <div className={styles.camperCard}>
+            <div className={styles.topRight}>
+                <p className={styles.camperPrice}>€{camper.price.toLocaleString()}</p>
+                <button onClick={handleFavoriteToggle} className={styles.favoriteButton}>
+                    <svg className={isFavorite ? styles.heartFilled : styles.heartOutline}>
+                        <use href={`../../public/images/icons.svg#icon-heart`}></use>
+                    </svg>
+                </button>
+            </div>
             <img src={camper.gallery[0].thumb} alt={camper.name} className={styles.camperImage} />
             <div className={styles.camperInfo}>
                 <h2 className={styles.camperName}>{camper.name}</h2>
@@ -36,8 +70,7 @@ const CamperCard = ({ camper }) => {
                 <div className={styles.camperEquipment}>
                     {renderEquipmentIcons()}
                 </div>
-                <p className={styles.camperPrice}>€{camper.price.toLocaleString()}</p>
-                <p className={styles.camperDescription}>{camper.description}</p>
+                <p className={styles.camperDescription}>{truncateText(camper.description, 50)}</p>
                 <div className={styles.camperReview}>
                     <span className={styles.starRating}>⭐ {camper.rating} ({camper.reviewCount} Reviews)</span>
                 </div>
