@@ -2,38 +2,61 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './FeaturesPage.module.css';
 
+// Define icon mapping for equipment
+const equipmentIcons = {
+    AC: 'icon-ac',
+    Automatic: 'icon-automatic',
+    Kitchen: 'icon-kitchen',
+    TV: 'icon-tv',
+    Bathroom: 'icon-bathroom',
+    Refrigerator: 'icon-solar-fridge',
+    Microwave: 'icon-lucide-microwave',
+    Gas: 'icon-gas-stove',
+    Water: 'icon-water',
+};
+
+// Function to render equipment icons based on selected camper's features
+const renderEquipmentIcons = (camper) => {
+    if (!camper) {
+        console.log("No camper data available to render icons.");
+        return <p>No equipment available.</p>;
+    }
+
+    console.log("Rendering equipment icons for camper:", camper);
+
+    return Object.keys(equipmentIcons)
+        .filter((key) => camper[key.toLowerCase()]) // Проверка свойств в объекте camper
+        .map((key) => {
+            const iconPath = `/images/icons.svg#${equipmentIcons[key]}`;
+            console.log(`Rendering icon: ${key}, path: ${iconPath}`);
+
+            return (
+                <div key={key} className={styles.featureItem}>
+                    <svg className={styles.icon}>
+                        <use href={iconPath}></use>
+                    </svg>
+                    {key}
+                </div>
+            );
+        });
+};
+
 const FeaturesPage = () => {
     const { selectedCamper } = useSelector((state) => state.campers);
+
+    // Проверка данных selectedCamper
+    console.log("Selected Camper:", selectedCamper);
 
     if (!selectedCamper) {
         return <div>No features available for this camper.</div>;
     }
 
-    // Define icon mapping for equipment
-    const equipmentIcons = {
-        AC: 'icon-ac',
-        Automatic: 'icon-automatic',
-        Kitchen: 'icon-kitchen',
-        Petrol: 'icon-petrol',
-        Radio: 'icon-radio',
-    };
-
-    const renderEquipmentIcons = () => {
-        return Object.keys(equipmentIcons)
-            .filter((key) => selectedCamper.features.includes(key))
-            .map((key, index) => (
-                <div key={index} className={styles.featureItem}>
-                    <svg className={styles.icon}>
-                        <use href={`../../public/images/icons.svg#${equipmentIcons[key]}`}></use>
-                    </svg>
-                    {key}
-                </div>
-            ));
-    };
-
     return (
         <div className={styles.featuresContainer}>
-            <div className={styles.equipment}>{renderEquipmentIcons()}</div>
+            {/* Render equipment icons */}
+            <div className={styles.equipment}>
+                {renderEquipmentIcons(selectedCamper)}
+            </div>
 
             <div className={styles.details}>
                 <h3>Vehicle details</h3>

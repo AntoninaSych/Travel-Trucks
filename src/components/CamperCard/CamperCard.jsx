@@ -69,14 +69,14 @@ const CamperCard = ({ camper }) => {
                 <div className={styles.camperReview}>
                     <span className={styles.starRating}>
                         <svg className={styles.icon}>
-                            <use href={`../../public/images/icons.svg#icon-star`}></use>
+                            <use href={`/images/icons.svg#icon-star`}></use>
                         </svg>
                         <span className={styles.textRating}>
                             {camper.rating} ({camper.review} Reviews)
                         </span>
                         <span className={styles.camperLocation}>
                             <svg className={styles.iconMap}>
-                                <use href="../../public/images/icons.svg#icon-map"></use>
+                                <use href="/images/icons.svg#icon-map"></use>
                             </svg>
                             {camper.location}</span>
                     </span>
