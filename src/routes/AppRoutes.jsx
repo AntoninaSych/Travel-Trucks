@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../pages/CatalogPage/CatalogPage'));
@@ -13,6 +13,8 @@ const AppRoutes = () => (
             <Route path="/" element={<HomePage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/catalog/:id" element={<CamperDetailsPage />}>
+                {/* Redirect to 'features' tab by default */}
+                <Route index element={<Navigate to="features" replace />} />
                 <Route path="features" element={<FeaturesPage />} />
                 <Route path="reviews" element={<ReviewsPage />} />
             </Route>
