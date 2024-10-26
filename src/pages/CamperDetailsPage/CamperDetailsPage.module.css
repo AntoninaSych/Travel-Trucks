@@ -1,40 +1,31 @@
 .detailsContainer {
+    display: flex;
+    flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    font-family: 'Inter', sans-serif;
+    gap: 20px;
 }
 
 .camperTitle {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
+    margin: 0;
 }
 
 .infoRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .ratingLocation {
     display: flex;
-    gap: 15px;
-    color: #777;
-}
-
-.rating {
-    display: flex;
     align-items: center;
+    gap: 10px;
     font-size: 1rem;
-    color: #101828;
-}
-
-.location {
-    font-size: 1rem;
-    color: #101828;
+    color: #555;
 }
 
 .price {
@@ -45,48 +36,68 @@
 
 .gallery {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 20px;
 }
 
 .gallery img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    object-fit: cover;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 8px;
 }
 
 .camperDescription {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    color: #777;
+    margin: 15px 0;
+}
+
+a{
+    text-decoration: none;
 }
 
 .tabs {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
 }
 
-.tabLink, .activeTab {
+.tabLink {
+    padding: 10px;
+    color: #101828;
     font-size: 1rem;
-    color: #333;
-    padding: 10px 0;
     text-decoration: none;
-}
-
-.tabLink:hover {
-    color: #E44848;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
 }
 
 .activeTab {
+    padding: 10px;
     color: #E44848;
-    font-weight: bold;
-    border-bottom: 2px solid #E44848;
+    border-bottom: 3px solid #E44848;
 }
 
+/* Content Section */
+.contentSection {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Left column for Features and Reviews */
+.featuresReviewsContainer {
+    flex: 2;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Right column for Booking Form */
 .bookingSection {
-    margin-top: 40px;
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
 }

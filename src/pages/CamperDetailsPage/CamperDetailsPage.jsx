@@ -48,12 +48,14 @@ const CamperDetailsPage = () => {
                 </NavLink>
             </div>
 
-            {/* Nested Route Outlet */}
-            <Outlet />
-
-            {/* Booking Form */}
-            <div className={styles.bookingSection}>
-                <BookingForm />
+            {/* Content Section: Features/Reviews and Booking Form */}
+            <div className={styles.contentSection}>
+                <div className={styles.featuresReviewsContainer}>
+                    <Outlet />
+                </div>
+                <div className={styles.bookingSection}>
+                    <BookingForm />
+                </div>
             </div>
         </div>
     );
