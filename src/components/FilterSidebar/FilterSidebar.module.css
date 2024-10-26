@@ -27,53 +27,58 @@
 .filterGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 16px; /* Подогнанный отступ для соответствия макету */
     margin-bottom: 20px;
 }
 
-
-.searchButton {
-    background-color: #E44848;
-    color: white;
-    padding: 15px;
-    width: 100%;
-    border: none;
-    border-radius: 200px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.searchButton:hover {
-    background-color: #DB4343;
-}
 .filterItem {
     display: flex;
+    flex-direction: column; /* Ставим текст под иконкой */
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    width: 96px; /* Ширина для соответствия макету */
+    height: 96px; /* Высота для соответствия макету */
+    padding: 8px; /* Подходящий отступ */
     background-color: #fff;
     border: 1px solid #DADEE1;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
     color: #101828;
     text-align: center;
     cursor: pointer;
-    gap: 8px;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-    fill: #101828;
-    flex-shrink: 0;
+    gap: 4px;
 }
 
 .filterItem.selected {
     border: 1px solid #E44848;
 }
 
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: #101828;
+}
+
 .checkbox {
     display: none;
+}
+
+.searchButton {
+    background-color: #E44848;
+    color: #fff;
+    padding: 10px;
+    width: 80%;
+    border: none;
+    border-radius: 200px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.searchButton:hover {
+    background-color: #DB4343;
 }
