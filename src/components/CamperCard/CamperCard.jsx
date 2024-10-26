@@ -67,20 +67,24 @@ const CamperCard = ({ camper }) => {
             <div className={styles.camperInfo}>
                 <h2 className={styles.camperName}>{camper.name}</h2>
                 <div className={styles.camperReview}>
-    <span className={styles.starRating}>
-        <svg className={styles.icon}>
-            <use href={`../../public/images/icons.svg#icon-star`}></use>
-        </svg>
-        <span className={styles.textRating}>
-            {camper.rating} ({camper.review} Reviews)
-        </span>
-        <span className={styles.camperLocation}>{camper.location}</span>
-    </span>
+                    <span className={styles.starRating}>
+                        <svg className={styles.icon}>
+                            <use href={`../../public/images/icons.svg#icon-star`}></use>
+                        </svg>
+                        <span className={styles.textRating}>
+                            {camper.rating} ({camper.review} Reviews)
+                        </span>
+                        <span className={styles.camperLocation}>
+                            <svg className={styles.iconMap}>
+                                <use href="../../public/images/icons.svg#icon-map"></use>
+                            </svg>
+                            {camper.location}</span>
+                    </span>
                 </div>
 
 
                 <div className={styles.camperEquipment}>
-                    {renderEquipmentIcons()}
+                {renderEquipmentIcons()}
                 </div>
                 <p className={styles.camperDescription}>{truncateText(camper.description, 50)}</p>
                 <Link to={`/catalog/${camper.id}`}>

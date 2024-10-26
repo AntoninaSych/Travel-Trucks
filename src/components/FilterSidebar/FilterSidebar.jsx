@@ -74,6 +74,7 @@ const FilterSidebar = ({ onFilter }) => {
             </div>
 
             <h3>Vehicle equipment</h3>
+            <hr className={styles.line}/>
             <div className={styles.filterGrid}>
                 {Object.keys(filters).map((filter) => (
                     <label key={filter} className={`${styles.filterItem} ${filters[filter] ? styles.selected : ''}`}>
@@ -93,6 +94,7 @@ const FilterSidebar = ({ onFilter }) => {
             </div>
 
             <h3>Vehicle type</h3>
+            <hr className={styles.line}/>
             <div className={styles.filterGrid}>
                 {Object.keys(vehicleType).map((type) => (
                     <label key={type} className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}>

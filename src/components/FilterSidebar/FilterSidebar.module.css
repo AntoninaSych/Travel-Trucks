@@ -90,3 +90,9 @@
     background-color: #DB4343;
     cursor: pointer;
 }
+
+.line{
+    margin-bottom: 15px;
+    margin-top: 15px;
+    color:  #DADDE1
+}

@@ -21,19 +21,22 @@
     max-width: 200px;
     margin: 20px auto 0; /* Centers the button under the list */
     padding: 12px 0;
-    background-color: #E44848;
-    color: white;
-    border: none;
+    border: 1px solid #DADDE1;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.005em;
+    text-align: left;
+    color: #101828;
     border-radius: 25px;
-    font-size: 1rem;
-    font-weight: bold;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 .loadMoreButton:hover {
-    background-color: #DB4343;
+    border-color: #DB4343;
 }
 
 .noResults, .error {

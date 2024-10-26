@@ -76,11 +76,10 @@
 
 .camperLocation {
     font-size: 0.9rem;
-    color: #777;
+    color: #101828;
     display: flex;
     align-items: center;
     gap: 5px;
-    margin-top: 5px;
 }
 
 .camperEquipment {
@@ -106,6 +105,11 @@
     width: 16px;
     height: 16px;
     fill: #555;
+}
+.iconMap{
+    width: 16px;
+    height: 16px;
+    fill: #101828;
 }
 
 .camperDescription {
@@ -144,29 +148,6 @@
 .textRating:hover {
     text-decoration: underline;
 }
-
-
-/*.showMoreButton {*/
-/*    background-color: #E44848;*/
-/*    color: #fff;*/
-/*    padding: 10px 15px;*/
-/*    border: none;*/
-/*    border-radius: 200px;*/
-/*    cursor: pointer;*/
-/*    margin-top: 15px;*/
-/*    align-self: flex-start;*/
-
-/*    font-size: 16px;*/
-/*    font-weight: 500;*/
-/*    line-height: 24px;*/
-/*    letter-spacing: -0.005em;*/
-/*    text-align: left;*/
-/*    transition: background-color 0.3s ease;*/
-/*}*/
-
-/*.showMoreButton:hover {*/
-/*    background-color: #DB4343;*/
-/*}*/
 
 .textRating{
     color: #101828;
