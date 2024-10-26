@@ -1,38 +1,9 @@
+// src/store/camperSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Базовий URL для API
 const BASE_URL = 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers';
 
-// Асинхронний thunk для отримання списку кемперів
-export const fetchCampers = createAsyncThunk(
-    'campers/fetchCampers',
-    async (page, thunkAPI) => {
-        try {
-            const response = await axios.get(`${BASE_URL}?page=${page}&limit=5`);
-            return response.data.items;
-        } catch (error) {
-            // Обробка помилки з передачею повідомлення через rejectWithValue
-            return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to fetch campers');
-        }
-    }
-);
-
-// Асинхронний thunk для отримання деталей окремого кемпера
-export const fetchCamperDetails = createAsyncThunk(
-    'campers/fetchCamperDetails',
-    async (id, thunkAPI) => {
-        try {
-            const response = await axios.get(`${BASE_URL}/${id}`);
-            return response.data;
-        } catch (error) {
-            // Обробка помилки з передачею повідомлення через rejectWithValue
-            return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to fetch camper details');
-        }
-    }
-);
-
-// Початковий стан
 const initialState = {
     campers: [],
     selectedCamper: null,
@@ -41,7 +12,43 @@ const initialState = {
     page: 1,
 };
 
-// Slice для управління станом кемперів
+// Define fetchCampers thunk without exporting yet
+const fetchCampers = createAsyncThunk(
+    'campers/fetchCampers',
+    async ({ page, filters = {} }, thunkAPI) => {
+        try {
+            let query = `page=${page}&limit=5`;
+            if (filters.location) query += `&location=${encodeURIComponent(filters.location)}`;
+            Object.entries(filters.filters || {}).forEach(([key, value]) => {
+                if (value) query += `&${key.toLowerCase()}=true`;
+            });
+            Object.entries(filters.vehicleType || {}).forEach(([key, value]) => {
+                if (value) query += `&form=${encodeURIComponent(key)}`;
+            });
+
+            const response = await axios.get(`${BASE_URL}?${query}`);
+            return { items: response.data.items, page };
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Failed to fetch campers';
+            return thunkAPI.rejectWithValue(errorMessage);
+        }
+    }
+);
+
+// Define fetchCamperDetails thunk without exporting yet
+const fetchCamperDetails = createAsyncThunk(
+    'campers/fetchCamperDetails',
+    async (id, thunkAPI) => {
+        try {
+            const response = await axios.get(`${BASE_URL}/${id}`);
+            return response.data;
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Failed to fetch camper details';
+            return thunkAPI.rejectWithValue(errorMessage);
+        }
+    }
+);
+
 const camperSlice = createSlice({
     name: 'campers',
     initialState,
@@ -51,24 +58,23 @@ const camperSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        // Обробка стану під час завантаження списку кемперів
         builder
             .addCase(fetchCampers.pending, (state) => {
                 state.status = 'loading';
-                state.error = null; // Скидаємо попередні помилки при новому запиті
+                state.error = null;
             })
             .addCase(fetchCampers.fulfilled, (state, action) => {
+                const { items, page } = action.payload;
                 state.status = 'succeeded';
-                state.campers = [...state.campers, ...action.payload]; // Додаємо нові кемпери
+                state.campers = page === 1 ? items : [...state.campers, ...items];
             })
             .addCase(fetchCampers.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.payload; // Зберігаємо повідомлення про помилку
+                state.error = action.payload;
             })
-            // Обробка стану під час завантаження деталей кемпера
             .addCase(fetchCamperDetails.pending, (state) => {
                 state.status = 'loading';
-                state.error = null; // Скидаємо попередні помилки при новому запиті
+                state.error = null;
             })
             .addCase(fetchCamperDetails.fulfilled, (state, action) => {
                 state.status = 'succeeded';
@@ -76,10 +82,14 @@ const camperSlice = createSlice({
             })
             .addCase(fetchCamperDetails.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.payload; // Зберігаємо повідомлення про помилку
+                state.error = action.payload;
             });
     },
 });
 
-export default camperSlice.reducer;
+// Step 1: Export actions and reducer only (no thunks yet)
 export const { loadMore } = camperSlice.actions;
+export default camperSlice.reducer;
+
+// Step 2: Add the exports for thunks one by one
+export { fetchCampers, fetchCamperDetails };

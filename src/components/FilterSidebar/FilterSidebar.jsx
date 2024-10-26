@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCampers } from '../../store/camperSlice';
 import styles from './FilterSidebar.module.css';
 
-
 const FilterSidebar = ({ onFilter }) => {
+    const dispatch = useDispatch();
+
     const [location, setLocation] = useState('');
     const [filters, setFilters] = useState({
         AC: false,
@@ -10,6 +13,7 @@ const FilterSidebar = ({ onFilter }) => {
         Kitchen: false,
         TV: false,
         Bathroom: false,
+        Refrigerator: false,
     });
 
     const [vehicleType, setVehicleType] = useState({
@@ -29,7 +33,9 @@ const FilterSidebar = ({ onFilter }) => {
     };
 
     const handleSearch = () => {
-        onFilter({ location, filters, vehicleType });
+        const filterData = { location, filters, vehicleType };
+        dispatch(fetchCampers({ page: 1, filters: filterData }));
+        if (onFilter) onFilter(filterData);
     };
 
     const filterIcons = {
@@ -38,6 +44,7 @@ const FilterSidebar = ({ onFilter }) => {
         Kitchen: 'icon-kitchen',
         TV: 'icon-tv',
         Bathroom: 'icon-bathroom',
+        Refrigerator: 'icon-refrigerator',
     };
 
     const vehicleTypeIcons = {
@@ -84,9 +91,8 @@ const FilterSidebar = ({ onFilter }) => {
             <h3>Vehicle type</h3>
             <div className={styles.filterGrid}>
                 {Object.keys(vehicleType).map((type) => (
-
                     <label key={type} className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}>
-       <input
+                        <input
                             type="checkbox"
                             name={type}
                             checked={vehicleType[type]}

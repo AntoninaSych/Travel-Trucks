@@ -1,3 +1,4 @@
+// src/routes/AppRoutes.jsx
 import { Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage/HomePage';
 import CatalogPage from '../pages/CatalogPage/CatalogPage';
