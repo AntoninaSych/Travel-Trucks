@@ -7,20 +7,27 @@
 
 .review {
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header {
+    display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #e5e5e5;
+    width: 60px;
+    height: 60px;
+    background-color: #F2F4F7;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    color: #333;
+    font-weight: 600;
+    font-size: 24px;
+    color: #E44848;
 }
 
 .author {
@@ -30,8 +37,16 @@
 }
 
 .rating {
+    display: flex;
+    gap: 2px;
     color: #FFC531;
     font-size: 0.9rem;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: #FFC531;
 }
 
 .text {
