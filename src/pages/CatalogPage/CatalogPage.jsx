@@ -29,23 +29,25 @@ const CatalogPage = () => {
     return (
         <div className={styles.catalogPage}>
             <FilterSidebar onFilter={handleFilter} />
-            <div className={styles.camperList}>
-                {status === 'loading' && <p>Loading campers...</p>}
-                {status === 'failed' && (
-                    <p className={styles.noResults}>No results match your search.</p>
+            <div className={styles.camperContainer}>
+                <div className={styles.camperList}>
+                    {status === 'loading' && <p>Loading campers...</p>}
+                    {status === 'failed' && (
+                        <p className={styles.noResults}>No results match your search.</p>
+                    )}
+                    {status === 'succeeded' && campers.length === 0 && (
+                        <p className={styles.noResults}>No campers found for the selected filters.</p>
+                    )}
+                    {status === 'succeeded' && campers.length > 0 && campers.map((camper) => (
+                        <CamperCard key={camper.id} camper={camper} />
+                    ))}
+                </div>
+                {status === 'succeeded' && campers.length > 0 && (
+                    <button className={styles.loadMoreButton} onClick={handleLoadMore}>
+                        Load More
+                    </button>
                 )}
-                {status === 'succeeded' && campers.length === 0 && (
-                    <p className={styles.noResults}>No campers found for the selected filters.</p>
-                )}
-                {status === 'succeeded' && campers.length > 0 && campers.map((camper) => (
-                    <CamperCard key={camper.id} camper={camper} />
-                ))}
             </div>
-            {status === 'succeeded' && campers.length > 0 && (
-                <button className={styles.loadMoreButton} onClick={handleLoadMore}>
-                    Load More
-                </button>
-            )}
         </div>
     );
 };

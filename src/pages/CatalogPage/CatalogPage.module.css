@@ -1,35 +1,42 @@
 .catalogPage {
     display: flex;
+    justify-content: center; /* Centers the entire layout */
     padding: 20px;
+    gap: 32px; /* Matches the gap from Figma */
+    max-width: 1440px; /* Restricts layout width for larger screens */
+    margin: 0 auto; /* Centers page content */
 }
 
 .camperList {
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin-left: 20px;
+    max-width: 888px; /* Width for the content area according to Figma */
+    gap: 24px;
 }
 
 .loadMoreButton {
-    margin-top: 20px;
-    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 0; /* Centers the button under the list */
+    padding: 12px 0;
     background-color: #E44848;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .loadMoreButton:hover {
     background-color: #DB4343;
 }
-.noResults {
-    color: #E44848;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 20px;
-}
 
-.error {
+.noResults, .error {
     color: #E44848;
     font-size: 1.2rem;
     text-align: center;
