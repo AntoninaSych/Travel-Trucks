@@ -26,7 +26,6 @@
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .camperName {
@@ -77,6 +76,22 @@
     margin: 10px 0;
 }
 
+.camperDescription {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.camperReview {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+.starRating {
+    color: #FFD700; /* Gold color for stars */
+}
+
 .showMoreButton {
     background-color: #E44848;
     color: #fff;
@@ -85,6 +100,8 @@
     border-radius: 5px;
     font-size: 0.9rem;
     cursor: pointer;
+    margin-top: 15px;
+    align-self: flex-start;
     transition: background-color 0.3s ease;
 }
 

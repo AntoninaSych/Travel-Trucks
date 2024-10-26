@@ -37,6 +37,10 @@ const CamperCard = ({ camper }) => {
                     {renderEquipmentIcons()}
                 </div>
                 <p className={styles.camperPrice}>€{camper.price.toLocaleString()}</p>
+                <p className={styles.camperDescription}>{camper.description}</p>
+                <div className={styles.camperReview}>
+                    <span className={styles.starRating}>⭐ {camper.rating} ({camper.reviewCount} Reviews)</span>
+                </div>
                 <Link to={`/catalog/${camper.id}`}>
                     <button className={styles.showMoreButton}>Show more</button>
                 </Link>
