@@ -1,4 +1,3 @@
-// src/store/camperSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,10 +9,11 @@ const initialState = {
     status: 'idle',
     error: null,
     page: 1,
+    savedFilters: {}, // Новый state для сохранения фильтров
 };
 
-// Define fetchCampers thunk without exporting yet
-const fetchCampers = createAsyncThunk(
+// Определение fetchCampers как createAsyncThunk
+export const fetchCampers = createAsyncThunk(
     'campers/fetchCampers',
     async ({ page, filters = {} }, thunkAPI) => {
         try {
@@ -27,7 +27,7 @@ const fetchCampers = createAsyncThunk(
             });
 
             const response = await axios.get(`${BASE_URL}?${query}`);
-            return { items: response.data.items, page };
+            return { items: response.data.items, page, filters }; // возвращаем фильтры для сохранения
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch campers';
             return thunkAPI.rejectWithValue(errorMessage);
@@ -35,8 +35,8 @@ const fetchCampers = createAsyncThunk(
     }
 );
 
-// Define fetchCamperDetails thunk without exporting yet
-const fetchCamperDetails = createAsyncThunk(
+// Определение fetchCamperDetails как createAsyncThunk
+export const fetchCamperDetails = createAsyncThunk(
     'campers/fetchCamperDetails',
     async (id, thunkAPI) => {
         try {
@@ -64,9 +64,10 @@ const camperSlice = createSlice({
                 state.error = null;
             })
             .addCase(fetchCampers.fulfilled, (state, action) => {
-                const { items, page } = action.payload;
+                const { items, page, filters } = action.payload;
                 state.status = 'succeeded';
                 state.campers = page === 1 ? items : [...state.campers, ...items];
+                state.savedFilters = filters; // Сохраняем текущие фильтры
             })
             .addCase(fetchCampers.rejected, (state, action) => {
                 state.status = 'failed';
@@ -87,9 +88,6 @@ const camperSlice = createSlice({
     },
 });
 
-// Step 1: Export actions and reducer only (no thunks yet)
+
 export const { loadMore } = camperSlice.actions;
 export default camperSlice.reducer;
-
-// Step 2: Add the exports for thunks one by one
-export { fetchCampers, fetchCamperDetails };

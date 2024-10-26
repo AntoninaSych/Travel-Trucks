@@ -1,25 +1,28 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCampers } from '../../store/camperSlice';
 import styles from './FilterSidebar.module.css';
 
 const FilterSidebar = ({ onFilter }) => {
     const dispatch = useDispatch();
 
-    const [location, setLocation] = useState('');
-    const [filters, setFilters] = useState({
-        AC: false,
-        Automatic: false,
-        Kitchen: false,
-        TV: false,
-        Bathroom: false,
-        Refrigerator: false,
-    });
+    // Достаем текущие фильтры из состояния, если они уже есть
+    const { savedFilters } = useSelector((state) => state.campers);
 
+    // Начальное состояние с учетом сохраненных фильтров
+    const [location, setLocation] = useState(savedFilters?.location || '');
+    const [filters, setFilters] = useState({
+        AC: savedFilters?.filters?.AC || false,
+        Automatic: savedFilters?.filters?.Automatic || false,
+        Kitchen: savedFilters?.filters?.Kitchen || false,
+        TV: savedFilters?.filters?.TV || false,
+        Bathroom: savedFilters?.filters?.Bathroom || false,
+        Refrigerator: savedFilters?.filters?.Refrigerator || false,
+    });
     const [vehicleType, setVehicleType] = useState({
-        Van: false,
-        FullyIntegrated: false,
-        Alcove: false,
+        Van: savedFilters?.vehicleType?.Van || false,
+        FullyIntegrated: savedFilters?.vehicleType?.FullyIntegrated || false,
+        Alcove: savedFilters?.vehicleType?.Alcove || false,
     });
 
     const handleLocationChange = (e) => setLocation(e.target.value);
@@ -34,6 +37,7 @@ const FilterSidebar = ({ onFilter }) => {
 
     const handleSearch = () => {
         const filterData = { location, filters, vehicleType };
+        // Сохраняем фильтры в глобальном состоянии
         dispatch(fetchCampers({ page: 1, filters: filterData }));
         if (onFilter) onFilter(filterData);
     };
@@ -44,12 +48,12 @@ const FilterSidebar = ({ onFilter }) => {
         Kitchen: 'icon-kitchen',
         TV: 'icon-tv',
         Bathroom: 'icon-bathroom',
-        Refrigerator: 'icon-refrigerator',
+        Refrigerator: 'icon-solar_fridge-outline',
     };
 
     const vehicleTypeIcons = {
         Van: 'icon-van',
-        FullyIntegrated: 'icon-icomoon-ignore',
+        FullyIntegrated: 'icon-integrated',
         Alcove: 'icon-alcove',
     };
 

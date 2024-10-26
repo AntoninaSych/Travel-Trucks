@@ -6,27 +6,75 @@
     padding: 15px;
     margin-bottom: 20px;
     align-items: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.camperCard:hover {
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .camperImage {
     width: 150px;
     height: 100px;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 .camperInfo {
     flex: 1;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .camperName {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.camperLocation {
+    font-size: 0.9rem;
+    color: #777;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.camperEquipment {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.equipmentIcon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #555;
+    background-color: #F5F5F5;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #DADEE1;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: #555;
 }
 
 .camperPrice {
     font-size: 1.2rem;
     font-weight: bold;
+    color: #333;
+    margin: 10px 0;
 }
 
 .showMoreButton {
@@ -35,6 +83,9 @@
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .showMoreButton:hover {
