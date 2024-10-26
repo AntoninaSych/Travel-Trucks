@@ -22,3 +22,16 @@
 .loadMoreButton:hover {
     background-color: #DB4343;
 }
+.noResults {
+    color: #E44848;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    color: #E44848;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+}
