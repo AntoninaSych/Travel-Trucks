@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    max-width: 888px; /* Width for the content area according to Figma */
+    width: 888px; /* Width for the content area according to Figma */
     gap: 24px;
 }
 

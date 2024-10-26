@@ -66,14 +66,23 @@ const CamperCard = ({ camper }) => {
             <img src={camper.gallery[0].thumb} alt={camper.name} className={styles.camperImage} />
             <div className={styles.camperInfo}>
                 <h2 className={styles.camperName}>{camper.name}</h2>
-                <p className={styles.camperLocation}>{camper.location}</p>
+                <div className={styles.camperReview}>
+    <span className={styles.starRating}>
+        <svg className={styles.icon}>
+            <use href={`../../public/images/icons.svg#icon-star`}></use>
+        </svg>
+        <span className={styles.textRating}>
+            {camper.rating} ({camper.review} Reviews)
+        </span>
+        <span className={styles.camperLocation}>{camper.location}</span>
+    </span>
+                </div>
+
+
                 <div className={styles.camperEquipment}>
                     {renderEquipmentIcons()}
                 </div>
                 <p className={styles.camperDescription}>{truncateText(camper.description, 50)}</p>
-                <div className={styles.camperReview}>
-                    <span className={styles.starRating}>⭐ {camper.rating} ({camper.reviewCount} Reviews)</span>
-                </div>
                 <Link to={`/catalog/${camper.id}`}>
                     <button className={styles.showMoreButton}>Show more</button>
                 </Link>
