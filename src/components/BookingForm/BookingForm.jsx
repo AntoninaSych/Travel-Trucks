@@ -17,6 +17,7 @@ const BookingForm = () => {
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     placeholderText="Booking date*"
+                    className={styles.datePicker}
                 />
                 <textarea placeholder="Comment" />
                 <button type="submit">Send</button>

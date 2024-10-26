@@ -1,13 +1,18 @@
 .bookingForm {
-    padding: 20px;
-    background-color: #F9FAFB;
+    padding: 44px;
+    background-color: #fff;
     border: 1px solid #DADEE1;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .bookingForm h3 {
     font-size: 1.3rem;
     margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
 }
 
 .bookingForm p {
@@ -19,15 +24,20 @@
 .bookingForm form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 24px;
 }
 
 .bookingForm input,
 .bookingForm textarea,
-.bookingForm button {
-    padding: 10px;
-    border: 1px solid #DADEE1;
-    border-radius: 5px;
+.bookingForm .datePicker {
+    padding: 12px;
+    border: 1px solid #DADEE1; /* Убрана двойная рамка */
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #F9FAFB;
+    color: #333;
+    width: 100%; /* Заполняет ширину родительского блока */
+    box-sizing: border-box; /* Учитывает padding в width */
 }
 
 .bookingForm button {
@@ -35,6 +45,10 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
+    padding: 14px;
+    border: none;
+    border-radius: 24px;
+    width: 100%;
 }
 
 .bookingForm button:hover {

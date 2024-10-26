@@ -8,7 +8,6 @@ const ReviewsPage = () => {
 
     return (
         <div className={styles.reviewsContainer}>
-            <h2>Reviews</h2>
             {reviews.length > 0 ? (
                 reviews.map((review, index) => (
                     <div key={index} className={styles.review}>

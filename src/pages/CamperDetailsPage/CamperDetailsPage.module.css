@@ -87,17 +87,15 @@ a{
 
 /* Left column for Features and Reviews */
 .featuresReviewsContainer {
-    flex: 2;
-    background-color: #f9f9f9;
-    padding: 20px;
+    flex: 1;
+     padding: 20px;
     border-radius: 8px;
+    width: 631px;
 }
 
 /* Right column for Booking Form */
 .bookingSection {
     flex: 1;
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #e5e5e5;
     border-radius: 8px;
+    width: 641px;
 }
