@@ -106,7 +106,7 @@ const FilterSidebar = ({ onFilter }) => {
                             className={styles.checkbox}
                         />
                         <svg className={styles.icon}>
-                            <use href={`../../public/images/icons.svg#${vehicleTypeIcons[type]}`}></use>
+                            <use href={`/images/icons.svg#${vehicleTypeIcons[type]}`}></use>
                         </svg>
                         {type}
                     </label>
