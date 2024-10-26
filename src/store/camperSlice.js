@@ -9,10 +9,10 @@ const initialState = {
     status: 'idle',
     error: null,
     page: 1,
-    savedFilters: {}, // Новый state для сохранения фильтров
+    savedFilters: {}, // State for saving filters
 };
 
-// Определение fetchCampers как createAsyncThunk
+// Thunk to fetch list of campers with filters and pagination
 export const fetchCampers = createAsyncThunk(
     'campers/fetchCampers',
     async ({ page, filters = {} }, thunkAPI) => {
@@ -27,7 +27,7 @@ export const fetchCampers = createAsyncThunk(
             });
 
             const response = await axios.get(`${BASE_URL}?${query}`);
-            return { items: response.data.items, page, filters }; // возвращаем фильтры для сохранения
+            return { items: response.data.items, page, filters }; // Return items, page, and filters
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch campers';
             return thunkAPI.rejectWithValue(errorMessage);
@@ -35,7 +35,7 @@ export const fetchCampers = createAsyncThunk(
     }
 );
 
-// Определение fetchCamperDetails как createAsyncThunk
+// Thunk to fetch detailed information about a single camper
 export const fetchCamperDetails = createAsyncThunk(
     'campers/fetchCamperDetails',
     async (id, thunkAPI) => {
@@ -49,7 +49,7 @@ export const fetchCamperDetails = createAsyncThunk(
     }
 );
 
-const camperSlice = createSlice({
+const campersSlice = createSlice({
     name: 'campers',
     initialState,
     reducers: {
@@ -66,8 +66,9 @@ const camperSlice = createSlice({
             .addCase(fetchCampers.fulfilled, (state, action) => {
                 const { items, page, filters } = action.payload;
                 state.status = 'succeeded';
+                // Set campers or append new campers if it's a "load more" request
                 state.campers = page === 1 ? items : [...state.campers, ...items];
-                state.savedFilters = filters; // Сохраняем текущие фильтры
+                state.savedFilters = filters; // Save current filters
             })
             .addCase(fetchCampers.rejected, (state, action) => {
                 state.status = 'failed';
@@ -76,10 +77,15 @@ const camperSlice = createSlice({
             .addCase(fetchCamperDetails.pending, (state) => {
                 state.status = 'loading';
                 state.error = null;
+                state.selectedCamper = null; // Clear previous data
             })
             .addCase(fetchCamperDetails.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.selectedCamper = action.payload;
+                // Ensure features is an array if it's missing in the response
+                state.selectedCamper = {
+                    ...action.payload,
+                    features: action.payload.features || [], // Default to an empty array if missing
+                };
             })
             .addCase(fetchCamperDetails.rejected, (state, action) => {
                 state.status = 'failed';
@@ -88,6 +94,6 @@ const camperSlice = createSlice({
     },
 });
 
-
-export const { loadMore } = camperSlice.actions;
-export default camperSlice.reducer;
+// Exporting the loadMore action and reducer
+export const { loadMore } = campersSlice.actions;
+export default campersSlice.reducer;
