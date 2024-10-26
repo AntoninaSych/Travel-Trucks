@@ -32,12 +32,26 @@ const FilterSidebar = ({ onFilter }) => {
         onFilter({ location, filters, vehicleType });
     };
 
+    const filterIcons = {
+        AC: 'icon-ac',
+        Automatic: 'icon-automatic',
+        Kitchen: 'icon-kitchen',
+        TV: 'icon-tv',
+        Bathroom: 'icon-bathroom',
+    };
+
+    const vehicleTypeIcons = {
+        Van: 'icon-van',
+        FullyIntegrated: 'icon-icomoon-ignore',
+        Alcove: 'icon-alcove',
+    };
+
     return (
         <div className={styles.filterSidebar}>
             <h3>Location</h3>
             <div className={styles.locationWrapper}>
                 <svg className={styles.icon}>
-                    <use href="../../assets/images/icons.svg#icon-map"></use>
+                    <use href="../../public/images/icons.svg#icon-map"></use>
                 </svg>
                 <input
                     type="text"
@@ -59,6 +73,9 @@ const FilterSidebar = ({ onFilter }) => {
                             onChange={handleFilterChange}
                             className={styles.checkbox}
                         />
+                        <svg className={styles.icon}>
+                            <use href={`../../public/images/icons.svg#${filterIcons[filter]}`}></use>
+                        </svg>
                         {filter}
                     </label>
                 ))}
@@ -67,14 +84,18 @@ const FilterSidebar = ({ onFilter }) => {
             <h3>Vehicle type</h3>
             <div className={styles.filterGrid}>
                 {Object.keys(vehicleType).map((type) => (
+
                     <label key={type} className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}>
-                        <input
+       <input
                             type="checkbox"
                             name={type}
                             checked={vehicleType[type]}
                             onChange={handleVehicleTypeChange}
                             className={styles.checkbox}
                         />
+                        <svg className={styles.icon}>
+                            <use href={`../../public/images/icons.svg#${vehicleTypeIcons[type]}`}></use>
+                        </svg>
                         {type}
                     </label>
                 ))}
