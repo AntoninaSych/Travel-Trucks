@@ -94,7 +94,7 @@ const FilterSidebar = ({ onFilter }) => {
             </div>
 
             <h3>Vehicle type</h3>
-            <hr/>
+            <hr className={styles.line}/>
             <div className={styles.filterGrid}>
                 {Object.keys(vehicleType).map((type) => (
                     <label key={type} className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}>
