@@ -42,7 +42,7 @@ const CamperCard = ({ camper }) => {
             .map((key) => (
                 <div key={key} className={styles.equipmentIcon}>
                     <svg className={styles.icon}>
-                        <use href={`../../public/images/icons.svg#${equipmentIcons[key]}`}></use>
+                        <use href={`/images/icons.svg#${equipmentIcons[key]}`}></use>
                     </svg>
                     {key}
                 </div>

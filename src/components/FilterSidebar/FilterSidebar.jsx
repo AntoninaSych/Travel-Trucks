@@ -62,7 +62,7 @@ const FilterSidebar = ({ onFilter }) => {
             <h3>Location</h3>
             <div className={styles.locationWrapper}>
                 <svg className={styles.icon}>
-                    <use href="../../public/images/icons.svg#icon-map"></use>
+                    <use href="/images/icons.svg#icon-map"></use>
                 </svg>
                 <input
                     type="text"
@@ -86,7 +86,7 @@ const FilterSidebar = ({ onFilter }) => {
                             className={styles.checkbox}
                         />
                         <svg className={styles.icon}>
-                            <use href={`../../public/images/icons.svg#${filterIcons[filter]}`}></use>
+                            <use href={`/images/icons.svg#${filterIcons[filter]}`}></use>
                         </svg>
                         {filter}
                     </label>
