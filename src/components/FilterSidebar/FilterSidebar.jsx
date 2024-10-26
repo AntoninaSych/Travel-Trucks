@@ -6,10 +6,8 @@ import styles from './FilterSidebar.module.css';
 const FilterSidebar = ({ onFilter }) => {
     const dispatch = useDispatch();
 
-    // Достаем текущие фильтры из состояния, если они уже есть
     const { savedFilters } = useSelector((state) => state.campers);
 
-    // Начальное состояние с учетом сохраненных фильтров
     const [location, setLocation] = useState(savedFilters?.location || '');
     const [filters, setFilters] = useState({
         AC: savedFilters?.filters?.AC || false,
@@ -37,7 +35,6 @@ const FilterSidebar = ({ onFilter }) => {
 
     const handleSearch = () => {
         const filterData = { location, filters, vehicleType };
-        // Сохраняем фильтры в глобальном состоянии
         dispatch(fetchCampers({ page: 1, filters: filterData }));
         if (onFilter) onFilter(filterData);
     };
@@ -97,7 +94,11 @@ const FilterSidebar = ({ onFilter }) => {
             <hr className={styles.line}/>
             <div className={styles.filterGrid}>
                 {Object.keys(vehicleType).map((type) => (
-                    <label key={type} className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}>
+                    <label
+                        key={type}
+                        data-name={type} // New attribute added
+                        className={`${styles.filterItem} ${vehicleType[type] ? styles.selected : ''}`}
+                    >
                         <input
                             type="checkbox"
                             name={type}
@@ -108,7 +109,7 @@ const FilterSidebar = ({ onFilter }) => {
                         <svg className={styles.icon}>
                             <use href={`/images/icons.svg#${vehicleTypeIcons[type]}`}></use>
                         </svg>
-                        {type}
+                        <span>{type === 'FullyIntegrated' ? 'Fully Integrated' : type}</span> {/* Updated for line break */}
                     </label>
                 ))}
             </div>

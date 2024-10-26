@@ -26,18 +26,18 @@
 .filterGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px; /* Подогнанный отступ для соответствия макету */
+    gap: 16px;
     margin-bottom: 20px;
 }
 
 .filterItem {
     display: flex;
-    flex-direction: column; /* Ставим текст под иконкой */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 96px; /* Ширина для соответствия макету */
-    height: 96px; /* Высота для соответствия макету */
-    padding: 8px; /* Подходящий отступ */
+    width: 96px;
+    height: 96px;
+    padding: 8px;
     background-color: #fff;
     border: 1px solid #DADEE1;
     border-radius: 12px;
@@ -56,11 +56,14 @@
     border: 1px solid #E44848;
 }
 
-.filterItem:hover{
+.filterItem:hover {
     border: 1px solid #E44848;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-
+.filterItem[data-name="FullyIntegrated"] span {
+    white-space: pre-wrap;
+    text-align: center;
 }
 
 .icon {
@@ -81,7 +84,7 @@
     border: none;
     border-radius: 200px;
     font-size: 16px;
- font-weight: 500;
+    font-weight: 500;
     margin-top: 20px;
     text-align: center;
 }
@@ -91,8 +94,11 @@
     cursor: pointer;
 }
 
-.line{
+.line {
     margin-bottom: 15px;
     margin-top: 15px;
-    color:  #DADDE1
+    color: #DADDE1;
+}
+.filterItem[data-name="FullyIntegrated"] span {
+    text-align: center;
 }
