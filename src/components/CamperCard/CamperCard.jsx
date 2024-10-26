@@ -59,7 +59,7 @@ const CamperCard = ({ camper }) => {
                 <p className={styles.camperPrice}>€{camper.price.toLocaleString()}</p>
                 <button onClick={handleFavoriteToggle} className={styles.favoriteButton}>
                     <svg className={isFavorite ? styles.heartFilled : styles.heartOutline}>
-                        <use href={`../../public/images/icons.svg#icon-heart`}></use>
+                        <use href={`/images/icons.svg#icon-heart`}></use>
                     </svg>
                 </button>
             </div>
